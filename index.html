@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/homeCss.css">
+    </head>
+<body>
+    <div class="navTitolo">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="progetto.html">Simulazione</a></li>
+            </ul>
+        </nav>
+        <h1>
+            Routing Information Protocol
+        </h1>
+    </div>
+    </ul>
+    <p class="introduzione">
+        Il protocollo RIP (Routing Information Protocol) è un protocollo<br>che i router possono utilizzare per scambiare
+        informazioni sulla topologia della rete. <br>È caratterizzato come un protocollo di gateway interno,<br>ed è
+        tipicamente utilizzato in reti di piccole e medie dimensioni. <br>Un router che esegue RIP invia il contenuto della
+        relativa tabella di routing<br>a ciascuno dei router adiacenti ogni 30 secondi. <br>Quando un percorso viene rimosso
+        dalla tabella di routing,<br>viene contrassegnato come inutilizzabile dai router di ricezione dopo 180 secondi<br>e
+        rimosso dalle tabelle dopo altri 120 secondi.<br>
+        Sono disponibili due versioni di RIP (switch managed supporta entrambe):<br><br>
+        RIPv1 definito in RFC 1058.<br>
+        -Le route sono specificate in base alla rete di destinazione IP e al numero di hop.<br>
+        -La tabella di routing viene trasmessa a tutte le stazioni sulla rete collegata.<br><br>
+        RIPv2 definito in RFC 1723.<br>
+        -La specifica di instradamento include anche la subnet mask e il gateway.<br>
+        -La tabella di routing viene inviata a un indirizzo multicast, riducendo il traffico di rete.<br>
+        -L'autenticazione viene utilizzata per Sicurezza / Protezione.<br>
+    </p>
+
+    <p style="margin-top: 120px;">
+        Qui di seguito abbiamo inserito un video contentente essenziali <br>informazioni sul Protocollo RIP e sulla sua implementazione su packet tracer:
+    </p>
+
+    <p class="videorimosso">ATTENZIONE: Il video è stato rimosso per questioni di spazio (massimo 5MB)</p>
+
+    <p class="approfondimento">
+        Ecco i passaggi fondamentali del protocollo RIP: <br><br>
+        <strong>1. **Inizializzazione** </strong>: - Ogni router che utilizza RIP costruisce una tabella di routing iniziale che contiene le 
+        informazioni sulle reti direttamente collegate. <br><br>
+        <strong>2. **Scambio di informazioni** </strong>: - Periodicamente (ogni 30 secondi per RIP v1 e RIP v2), 
+        i router inviano messaggi di aggiornamento delle tabelle di routing ai router adiacenti. Questi messaggi contengono l'intera tabella 
+        di routing del router mittente. <br><br>
+        <strong>3. **Aggiornamento delle tabelle di routing**</strong>: - Quando un router riceve un aggiornamento di routing da un vicino, 
+        confronta le informazioni ricevute con la propria tabella di routing. Se trova un percorso più corto verso una destinazione attraverso 
+        il router vicino, aggiorna la propria tabella di routing con questo nuovo percorso. Se riceve informazioni che indicano che una 
+        destinazione non è più raggiungibile, imposta il contatore di hop a 16 per indicare che la destinazione è inaccessibile. <br><br>
+        <strong>4. **Evitamento di loop di routing** </strong>: - RIP utilizza diverse tecniche per evitare i loop di routing, 
+        tra cui il "split horizon", "route poisoning" e "hold-down timers": <br>
+         - **Split horizon** : Un router non invia informazioni su una rotta attraverso l'interfaccia da cui ha ricevuto tali informazioni. <br>
+         - **Route poisoning** : Quando una rotta diventa inaccessibile, il router imposta il contatore di hop a 16 (infinito) e invia questa 
+        informazione a tutti i router vicini.<br>
+         - **Hold-down timers** : Quando un router riceve una notifica che una rotta è inaccessibile, aspetta un certo periodo prima di 
+         accettare aggiornamenti che indicano che la rotta è di nuovo accessibile. <br><br>
+        <strong>5. **Convergenza** </strong>: - La rete raggiunge uno stato di convergenza quando tutte le tabelle di routing dei router
+         contengono informazioni coerenti. In un protocollo di distanza-vettore come RIP, la convergenza può richiedere tempo, specialmente 
+         in reti grandi. Questi passaggi consentono ai router che utilizzano RIP di mantenere aggiornate le loro tabelle di routing e di 
+         adattarsi alle modifiche nella topologia della rete. Tuttavia, a causa delle sue limitazioni (come la metrica basata solo sul 
+         numero di hop e il limite di 15 hop), RIP è adatto principalmente per reti piccole e medie.
+    </p>
+</body>
+
+</html>
