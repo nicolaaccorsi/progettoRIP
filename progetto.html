@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/Simulazionecss.css">
+    <title>RIP</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="jquery/jqueryHome.js"> </script>
+</head>
+
+<body>
+    <div class="navTitolo">
+        <nav>
+            <ul>
+                <li><a href="pag_home.html">Home</a></li>
+                <li><a href="#">Simulazione</a></li>
+            </ul>
+        </nav>
+        <h1>
+            Routing Information Protocol
+        </h1>
+    </div>
+    
+    <div class="intestazione">
+        <div class="introduzione">
+            Per semplificare la comprensione del protocollo RIP, questa simulazione permette di capire le informazioni essenziali che i router devono comunicare, 
+            tralasciandone altre meno rilevanti, ad esempio i pacchetti RIP che vengono inviati agli switch, e poi scartati; qui, i pacchetti 
+            RIP contengono le informazioni chiave per gli altri router.
+            Segue una breve illustrazione del RIPv1, dove un router R1 comunica la via per raggiungere una rete ad un router R2, e R2 risponde
+            con le sue informazioni; seguono i passaggi chiave rilevanti.
+            <h4>Utilizzare START e STOP, cliccare sui router per visualizzare le routing table, cliccare sul pacchetto per approfondimenti.</h3>
+        </div>
+        <div class="cont0">
+            <div class="velocita">
+                <h3 id="selVelocita">Seleziona velocità:</h3>
+                <button id="lento">Lento</button>
+                <button id="normale">Normale</button>
+                <button id="veloce">Veloce</button>
+            </div>
+            <div class="startEstop">
+                <button id="start">START</button>
+                <button id="stop">STOP</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="rip">
+        <div class="cont1">
+            <div id="cont-tabellaR1">
+                <h3 id="nomeTabellaR1">Routing Table R1</h3>
+                <table id="tabellaR1">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Network</th>
+                            <th>Port</th>
+                            <th>Next Hop IP</th>
+                            <th>Hop</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>C</td>
+                            <td class="rete2azzurra">192.168.2.0</td>
+                            <td>Fa0/0</td>
+                            <td>---</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td class="rete1rosa">192.168.1.0</td>
+                            <td>Fa1/0</td>
+                            <td>---</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="invio">
+                <div id="timerR1"></div>
+                <div class="invio1 cont2">
+                    <img id="r1" src="img/router/router.png" width="100px"><br>
+                    <div id="nomeR1">R1</div>
+                    <div id="fa00R1">Fa0/0</div>
+                    <div id="fa10R1">Fa1/0</div>
+                    <div id="ip2R1">192.168.2.1</div>
+                    <div class="prova">
+                        <hr class="lineaVerticale rete1rosa" noshade>
+                        <img id="pV1" class="pacchettoVerticale" src="img/pacchettoVerde.png" width="40px">
+                    </div>
+                    <div class="contEndsystemSx">
+                        <div class="contPC1">
+                            <img src="img/pc/pc.png" width="80px"><br>
+                            <div class="nomePC">PC1</div>
+                        </div>
+                        <div class="contCavoO2">
+                            <hr class="rete1rosa" id="cavOrizzontale2" noshade>
+                            <div class="rete1"><div class="nomeRete">192.168.1.0</div></div>
+                        </div>
+                        <div class="switch1">
+                            <img id="sw1" src="img/switch/switch.png" width="100px"><br>
+                            <div id="nomeSW1">SW1</div>
+                        </div>
+                    </div>
+                    <div class="endsystemV1">
+                        <hr class="lineaV2 rete1rosa" noshade>
+                    </div>
+                    <div class="contPC2">
+                        <img id="pc2" src="img/pc/pc.png" width="80px">
+                        <div class="nomePC">PC2</div>
+                    </div>
+                </div>
+                <div class="cavo1">
+                    <div id="contPacchetto1">
+                        <hr id="cavOrizzontale" class="rete2azzurra" noshade>
+                        <img id="pO1" class="pacchettOrizzontale" src="img/pacchetti/pacchettoVerde2.png" width="40px">
+                        <table id="dvr">
+                            <thead>
+                                <tr id="headDVR1">
+                                    <th>Dest</th>
+                                    <th>Next Hop</th>
+                                    <th>Hop</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="rigaDVR1">
+                                    <td class="tdDVR tdDVR-ROSA">192.168.1.0</td>
+                                    <td class="tdDVR tdDVR-AZZURRO">192.168.2.1</td>
+                                    <td class="tdDVR">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="rete2"> <div class="nomeRete">192.168.2.0</div> </div>
+                    </div>
+
+                </div>
+                <div class="invio2 cont2">
+                    <img id="r2" src="img/router/router.png" width="100px"><br>
+                    <div id="nomeR2">R2</div>
+                    <div id="fa00R2">Fa0/0</div>
+                    <div id="fa10R2">Fa1/0</div>
+                    <div id="ip2R2">192.168.2.2</div>
+                    <div class="prova">
+                        <hr class="lineaVerticale rete3verde" noshade>
+                        <img id="pV2" class="pacchettoVerticale" src="img/pacchettoVerde.png" width="40px">
+                    </div>
+                    <div class="switch2">
+                        <img id="sw2" src="img/switch/switch.png" width="100px"><br>
+                        <div id="nomeSW2">SW2</div>
+                        <div class="rete3"><div class="nomeRete">192.168.3.0</div></div>
+                    </div>
+                    <div class="contCaviObliqui">
+                        <hr id="lineaObliquaSx" class="rete3verde" noshade>
+                        <hr id="lineaObliquaDx" class="rete3verde" noshade>
+                    </div>
+                    <div class="contEndsystemOriz">
+                        <div class="laptop1">
+                            <img id="laptop1" src="img/laptop/laptopSx.png" width="80px">
+                            <div class="nomeLaptop">L1</div>
+                        </div>
+                        <div class="laptop2">
+                            <img id="laptop2" src="img/laptop/laptopDx.png" width="80px">
+                            <div class="nomeLaptop">L2</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cont-tabellaR2">
+                <h3 id="nomeTabellaR2">Routing Table R2</h3>
+                <table id="tabellaR2">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Network</th>
+                            <th>Port</th>
+                            <th>Next Hop IP</th>
+                            <th>Hop</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>C</td>
+                            <td class="rete2azzurra">192.168.2.0</td>
+                            <td>Fa0/0</td>
+                            <td>---</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td class="rete3verde">192.168.3.0</td>
+                            <td>Fa1/0</td>
+                            <td>---</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src="js/javaScriptSimulazione.js"></script>
+
+</html>
